@@ -1,5 +1,24 @@
 # Riot Take-Home Technical Challenge
 
+## How to run
+
+```bash
+npm install
+cp .env.example .env   # set SIGNATURE_SECRET (and optionally PORT)
+npm start              # http://localhost:3000 (TypeScript via tsx)
+npm run lint
+npm test
+```
+
+Pre-commit (Husky) runs `npm run lint` then `npm test`; the commit is blocked if either fails.
+
+
+Endpoints: `POST /encrypt`, `POST /decrypt`, `POST /sign`, `POST /verify`.
+
+This project is written in **TypeScript**, with abstract `EncryptionAlgorithm` / `SigningAlgorithm` types and concrete Base64 / HMAC implementations.
+
+For design decisions (depth-1 encrypt, decrypt detection, canonical signing, abstraction), see [DEVELOPMENT.md](DEVELOPMENT.md).
+
 ## Overview
 
 This challenge requires you to build an HTTP API with 4 endpoints that handle JSON payloads for encryption, decryption, signing, and verification operations.
